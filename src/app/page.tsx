@@ -36,7 +36,7 @@ function HeroSection() {
         className="hero-grid"
       >
         {/* Left column */}
-        <div style={{ padding: "80px 0" }}>
+        <div style={{ padding: "80px 0" }} className="hero-left-col">
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -44,7 +44,7 @@ function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}
           >
-            <div style={{ width: 28, height: 1, background: "#E63329" }} />
+            <div style={{ width: 28, height: 1, background: "#E63329", flexShrink: 0 }} />
             <span
               style={{
                 fontFamily: "var(--font-space-mono)",
@@ -70,8 +70,8 @@ function HeroSection() {
                 style={{
                   fontFamily: "var(--font-space-grotesk)",
                   fontWeight: 700,
-                  fontSize: "clamp(60px, 8vw, 100px)",
-                  letterSpacing: "-3px",
+                  fontSize: "clamp(48px, 12vw, 100px)",
+                  letterSpacing: "-2px",
                   textTransform: "uppercase",
                   color: word === "STUDIO" ? "#E63329" : "#FFFFFF",
                   lineHeight: 0.95,
@@ -90,7 +90,7 @@ function HeroSection() {
             transition={{ duration: 0.5, delay: 0.7 }}
             style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}
           >
-            <div style={{ width: 44, height: 1, background: "rgba(255,255,255,0.2)" }} />
+            <div style={{ width: 44, height: 1, background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
             <span
               style={{
                 fontFamily: "var(--font-space-mono)",
@@ -129,11 +129,49 @@ function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
             style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
+            className="hero-ctas"
           >
-            <Link href="/rezervare" className="btn-red">
+            <Link
+              href="/rezervare"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                padding: "14px 28px",
+                background: "#E63329",
+                color: "#FFFFFF",
+                fontFamily: "var(--font-space-grotesk)",
+                fontSize: 11,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "1.5px",
+                textDecoration: "none",
+                minHeight: 48,
+              }}
+            >
               Rezervă Acum <ArrowRight size={14} />
             </Link>
-            <a href={`tel:${SALON.phoneRaw}`} className="btn-outline-white">
+            <a
+              href={`tel:${SALON.phoneRaw}`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                padding: "14px 28px",
+                background: "transparent",
+                color: "#FFFFFF",
+                fontFamily: "var(--font-space-grotesk)",
+                fontSize: 11,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "1.5px",
+                textDecoration: "none",
+                border: "0.5px solid rgba(255,255,255,0.5)",
+                minHeight: 48,
+              }}
+            >
               <Phone size={14} />
               Sună: {SALON.phone}
             </a>
@@ -153,13 +191,7 @@ function HeroSection() {
           }}
           className="hero-right"
         >
-          {/* Grid pattern */}
-          <div
-            className="grid-bg-dark"
-            style={{ position: "absolute", inset: 0 }}
-          />
-
-          {/* Ghost DXS */}
+          <div className="grid-bg-dark" style={{ position: "absolute", inset: 0 }} />
           <div
             style={{
               position: "absolute",
@@ -175,17 +207,11 @@ function HeroSection() {
           >
             DXS
           </div>
-
-          {/* Stat */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            style={{
-              position: "relative",
-              zIndex: 2,
-              textAlign: "center",
-            }}
+            style={{ position: "relative", zIndex: 2, textAlign: "center" }}
           >
             <div
               style={{
@@ -200,14 +226,7 @@ function HeroSection() {
             >
               5.0
             </div>
-            <div
-              style={{
-                color: "#E63329",
-                fontSize: 18,
-                letterSpacing: "4px",
-                marginBottom: 10,
-              }}
-            >
+            <div style={{ color: "#E63329", fontSize: 18, letterSpacing: "4px", marginBottom: 10 }}>
               ★★★★★
             </div>
             <div
@@ -227,8 +246,8 @@ function HeroSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-right { display: none !important; }
+          .hero-left-col { padding: 60px 0 48px !important; }
+          .hero-grid { padding: 0 20px !important; }
         }
       `}</style>
     </section>
@@ -246,6 +265,7 @@ function SocialProofBar() {
 
   return (
     <div
+      className="social-proof-bar"
       style={{
         background: "#FFFFFF",
         borderTop: "0.5px solid var(--border)",
@@ -254,7 +274,6 @@ function SocialProofBar() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: 0,
         overflow: "hidden",
       }}
     >
@@ -262,11 +281,13 @@ function SocialProofBar() {
         <div key={i} style={{ display: "flex", alignItems: "center" }}>
           {i > 0 && (
             <div
+              className="social-proof-sep"
               style={{
                 width: "0.5px",
                 height: 20,
                 background: "var(--border)",
-                margin: "0 28px",
+                margin: "0 20px",
+                flexShrink: 0,
               }}
             />
           )}
@@ -293,6 +314,7 @@ function SocialProofBar() {
 function ServicesSection() {
   return (
     <section
+      className="section-padded"
       style={{
         background: "var(--taupe-light)",
         padding: "96px 32px",
@@ -300,7 +322,6 @@ function ServicesSection() {
       }}
     >
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-        {/* Eyebrow */}
         <ScrollReveal>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
             <span
@@ -321,7 +342,7 @@ function ServicesSection() {
             style={{
               fontFamily: "var(--font-space-grotesk)",
               fontWeight: 700,
-              fontSize: "clamp(28px, 4vw, 44px)",
+              fontSize: "clamp(24px, 4vw, 44px)",
               textTransform: "uppercase",
               color: "#111111",
               letterSpacing: "-1px",
@@ -332,15 +353,14 @@ function ServicesSection() {
           </h2>
         </ScrollReveal>
 
-        {/* Grid */}
         <div
+          className="services-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             borderTop: "0.5px solid var(--border)",
             borderLeft: "0.5px solid var(--border)",
           }}
-          className="services-grid"
         >
           {SERVICES.map((cat, i) => (
             <ScrollReveal key={cat.category} delay={i * 0.1}>
@@ -354,7 +374,6 @@ function ServicesSection() {
                   borderTop: "3px solid #E63329",
                 }}
               >
-                {/* Ghost number */}
                 <div
                   style={{
                     position: "absolute",
@@ -371,16 +390,7 @@ function ServicesSection() {
                 >
                   {cat.ghost}
                 </div>
-
-                {/* Tag */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 16,
-                  }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <span
                     style={{
                       fontFamily: "var(--font-space-mono)",
@@ -395,8 +405,6 @@ function ServicesSection() {
                   </span>
                   <div style={{ flex: 1, height: "0.5px", background: "#E63329", opacity: 0.4 }} />
                 </div>
-
-                {/* Title */}
                 <h3
                   style={{
                     fontFamily: "var(--font-space-grotesk)",
@@ -414,8 +422,6 @@ function ServicesSection() {
                     ? "Bărbierit & Barbă"
                     : "Tratamente & Styling"}
                 </h3>
-
-                {/* List */}
                 <ul style={{ listStyle: "none", marginBottom: 28 }}>
                   {cat.items.slice(0, 5).map((item) => (
                     <li
@@ -431,13 +437,11 @@ function ServicesSection() {
                         gap: 8,
                       }}
                     >
-                      <span style={{ color: "#E63329", fontSize: 10 }}>—</span>
+                      <span style={{ color: "#E63329", fontSize: 10, flexShrink: 0 }}>—</span>
                       {item.name}
                     </li>
                   ))}
                 </ul>
-
-                {/* Price tag */}
                 <span
                   style={{
                     fontFamily: "var(--font-space-mono)",
@@ -460,18 +464,30 @@ function ServicesSection() {
 
         <ScrollReveal delay={0.3}>
           <div style={{ textAlign: "center", marginTop: 48 }}>
-            <Link href="/servicii" className="btn-black">
+            <Link
+              href="/servicii"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                padding: "14px 28px",
+                background: "#111111",
+                color: "#FFFFFF",
+                fontFamily: "var(--font-space-grotesk)",
+                fontSize: 11,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "1.5px",
+                textDecoration: "none",
+                minHeight: 48,
+              }}
+            >
               Vezi Toate Serviciile <ArrowRight size={14} />
             </Link>
           </div>
         </ScrollReveal>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .services-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }
@@ -479,36 +495,35 @@ function ServicesSection() {
 /* ────────────────────────── SECTION 4 — BIG STATS ────────────────── */
 function StatsSection() {
   const stats = [
-    { value: "5.0★", label: "Rating Google", desc: "Cel mai bun rating posibil", accent: "#E63329", numeric: false },
-    { value: 513, suffix: "", label: "Recenzii verificate", desc: "Clienți mulțumiți Google", accent: "var(--taupe)", numeric: true },
-    { value: 10, suffix: "+", label: "Ani de experiență", desc: "Pasiune și dedicare", accent: "#E63329", numeric: true },
-    { value: 18, suffix: "", label: "Servicii disponibile", desc: "Pentru orice stil", accent: "rgba(255,255,255,0.1)", numeric: true },
+    { value: "5.0★", label: "Rating Google", desc: "Cel mai bun rating posibil", numeric: false },
+    { value: 513, suffix: "", label: "Recenzii verificate", desc: "Clienți mulțumiți Google", numeric: true },
+    { value: 10, suffix: "+", label: "Ani de experiență", desc: "Pasiune și dedicare", numeric: true },
+    { value: 18, suffix: "", label: "Servicii disponibile", desc: "Pentru orice stil", numeric: true },
   ];
 
   return (
     <section style={{ background: "#111111", position: "relative" }}>
       <div
+        className="stats-grid"
         style={{
           maxWidth: 1400,
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
         }}
-        className="stats-grid"
       >
         {stats.map((stat, i) => (
           <ScrollReveal key={stat.label} delay={i * 0.08}>
             <div
+              className="stat-item"
               style={{
                 padding: "72px 40px",
                 borderRight: i < 3 ? "0.5px solid rgba(255,255,255,0.06)" : "none",
-                borderTop: `3px solid ${stat.accent}`,
+                borderTop: "3px solid #E63329",
                 position: "relative",
                 overflow: "hidden",
               }}
-              className="stat-item"
             >
-              {/* Ghost bg */}
               <div
                 style={{
                   position: "absolute",
@@ -524,9 +539,8 @@ function StatsSection() {
                   whiteSpace: "nowrap",
                 }}
               >
-                {stat.numeric ? stat.value : stat.value}
+                {stat.value}
               </div>
-
               <div
                 style={{
                   fontFamily: "var(--font-space-mono)",
@@ -539,12 +553,11 @@ function StatsSection() {
               >
                 {stat.label}
               </div>
-
               <div
                 style={{
                   fontFamily: "var(--font-space-mono)",
                   fontWeight: 700,
-                  fontSize: "clamp(40px, 4vw, 58px)",
+                  fontSize: "clamp(36px, 4vw, 58px)",
                   color: "#E63329",
                   letterSpacing: "-2px",
                   lineHeight: 1,
@@ -557,7 +570,6 @@ function StatsSection() {
                   stat.value
                 )}
               </div>
-
               <div
                 style={{
                   fontFamily: "var(--font-space-grotesk)",
@@ -575,8 +587,8 @@ function StatsSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .stat-item { border-right: none !important; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+          .stats-grid { max-width: 100% !important; }
+          .stat-item { padding: 48px 24px !important; }
         }
       `}</style>
     </section>
@@ -615,8 +627,8 @@ function WhyUsSection() {
   return (
     <section style={{ background: "#111111" }}>
       <div
-        style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}
         className="why-grid"
+        style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}
       >
         {panels.map((p, i) => (
           <ScrollReveal key={p.title} delay={i * 0.1}>
@@ -627,12 +639,13 @@ function WhyUsSection() {
                 borderTop: `3px solid ${p.accent}`,
                 borderRight: i < 2 ? "0.5px solid rgba(255,255,255,0.05)" : "none",
               }}
+              className="why-panel"
             >
               <div
                 style={{
                   fontFamily: "var(--font-space-mono)",
                   fontWeight: 700,
-                  fontSize: 52,
+                  fontSize: "clamp(36px, 5vw, 52px)",
                   color: p.valueColor,
                   letterSpacing: "-2px",
                   lineHeight: 1,
@@ -658,7 +671,7 @@ function WhyUsSection() {
                 style={{
                   fontFamily: "var(--font-space-grotesk)",
                   fontWeight: 300,
-                  fontSize: 12,
+                  fontSize: 13,
                   color: "rgba(255,255,255,0.42)",
                   lineHeight: 1.8,
                 }}
@@ -672,7 +685,7 @@ function WhyUsSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .why-grid { grid-template-columns: 1fr !important; }
+          .why-panel { padding: 48px 24px !important; border-right: none !important; }
         }
       `}</style>
     </section>
@@ -701,11 +714,8 @@ function ReviewsSection() {
 
   return (
     <section
-      style={{
-        background: "#FFFFFF",
-        padding: "96px 32px",
-        position: "relative",
-      }}
+      className="section-padded"
+      style={{ background: "#FFFFFF", padding: "96px 32px", position: "relative" }}
     >
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal>
@@ -728,7 +738,7 @@ function ReviewsSection() {
             style={{
               fontFamily: "var(--font-space-grotesk)",
               fontWeight: 700,
-              fontSize: "clamp(24px, 3vw, 36px)",
+              fontSize: "clamp(20px, 3vw, 36px)",
               textTransform: "uppercase",
               letterSpacing: "-1px",
               color: "#111111",
@@ -740,6 +750,7 @@ function ReviewsSection() {
         </ScrollReveal>
 
         <div
+          className="reviews-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -747,7 +758,6 @@ function ReviewsSection() {
             borderTop: "0.5px solid var(--border)",
             borderLeft: "0.5px solid var(--border)",
           }}
-          className="reviews-grid"
         >
           {reviews.map((r, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
@@ -772,41 +782,25 @@ function ReviewsSection() {
                 >
                   &ldquo;{r.text}&rdquo;
                 </p>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ flex: 1 }}>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-space-grotesk)",
-                        fontWeight: 600,
-                        fontSize: 12,
-                        color: "#111111",
-                      }}
-                    >
-                      — {r.author}
-                    </div>
-                    <div
-                      style={{
-                        color: "#E63329",
-                        fontSize: 12,
-                        letterSpacing: "2px",
-                        marginTop: 2,
-                      }}
-                    >
-                      {r.stars}
-                    </div>
-                  </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-space-grotesk)",
+                    fontWeight: 600,
+                    fontSize: 12,
+                    color: "#111111",
+                    marginBottom: 2,
+                  }}
+                >
+                  — {r.author}
+                </div>
+                <div style={{ color: "#E63329", fontSize: 12, letterSpacing: "2px" }}>
+                  {r.stars}
                 </div>
               </div>
             </ScrollReveal>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .reviews-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }
@@ -814,9 +808,15 @@ function ReviewsSection() {
 /* ──────────────────── SECTION 7 — SCHEDULE & LOCATION ────────────── */
 function ScheduleSection() {
   return (
-    <section style={{ display: "grid", gridTemplateColumns: "60% 40%" }} className="schedule-grid">
+    <section
+      className="schedule-grid"
+      style={{ display: "grid", gridTemplateColumns: "60% 40%" }}
+    >
       {/* Left — dark */}
-      <div style={{ background: "#111111", padding: "80px 64px 80px 32px" }}>
+      <div
+        className="schedule-left"
+        style={{ background: "#111111", padding: "80px 64px 80px 32px" }}
+      >
         <div style={{ maxWidth: 560, marginLeft: "auto" }}>
           <ScrollReveal>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 40 }}>
@@ -877,7 +877,10 @@ function ScheduleSection() {
       </div>
 
       {/* Right — taupe-light */}
-      <div style={{ background: "var(--taupe-light)", padding: "80px 32px 80px 64px" }}>
+      <div
+        className="schedule-right"
+        style={{ background: "var(--taupe-light)", padding: "80px 32px 80px 64px" }}
+      >
         <ScrollReveal>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 40 }}>
             <span
@@ -900,7 +903,7 @@ function ScheduleSection() {
               style={{
                 fontFamily: "var(--font-space-grotesk)",
                 fontWeight: 700,
-                fontSize: 22,
+                fontSize: "clamp(18px, 2.5vw, 22px)",
                 color: "#111111",
                 lineHeight: 1.4,
                 marginBottom: 4,
@@ -912,7 +915,7 @@ function ScheduleSection() {
               style={{
                 fontFamily: "var(--font-space-grotesk)",
                 fontWeight: 700,
-                fontSize: 22,
+                fontSize: "clamp(18px, 2.5vw, 22px)",
                 color: "#111111",
                 marginBottom: 4,
               }}
@@ -938,7 +941,7 @@ function ScheduleSection() {
               display: "block",
               fontFamily: "var(--font-space-mono)",
               fontWeight: 700,
-              fontSize: 28,
+              fontSize: "clamp(20px, 3vw, 28px)",
               color: "#111111",
               textDecoration: "none",
               marginBottom: 28,
@@ -952,20 +955,29 @@ function ScheduleSection() {
             href={SALON.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-black"
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              width: "100%",
+              padding: "14px 28px",
+              background: "#111111",
+              color: "#FFFFFF",
+              fontFamily: "var(--font-space-grotesk)",
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "1.5px",
+              textDecoration: "none",
+              minHeight: 48,
+            }}
           >
             <MapPin size={14} />
             Deschide în Google Maps →
           </a>
         </ScrollReveal>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .schedule-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }
@@ -974,15 +986,12 @@ function ScheduleSection() {
 function CtaSection() {
   return (
     <section
-      style={{
-        display: "grid",
-        gridTemplateColumns: "60% 40%",
-        minHeight: 480,
-      }}
       className="cta-grid"
+      style={{ display: "grid", gridTemplateColumns: "60% 40%", minHeight: 480 }}
     >
       {/* Left */}
       <div
+        className="cta-left"
         style={{
           background: "#111111",
           padding: "80px 64px 80px 32px",
@@ -1001,7 +1010,7 @@ function CtaSection() {
                 style={{
                   fontFamily: "var(--font-space-grotesk)",
                   fontWeight: 700,
-                  fontSize: "clamp(48px, 6vw, 72px)",
+                  fontSize: "clamp(40px, 6vw, 72px)",
                   textTransform: "uppercase",
                   letterSpacing: "-2px",
                   color: "#FFFFFF",
@@ -1013,7 +1022,7 @@ function CtaSection() {
                 style={{
                   fontFamily: "var(--font-space-grotesk)",
                   fontWeight: 700,
-                  fontSize: "clamp(48px, 6vw, 72px)",
+                  fontSize: "clamp(40px, 6vw, 72px)",
                   textTransform: "uppercase",
                   letterSpacing: "-2px",
                   color: "#E63329",
@@ -1033,11 +1042,51 @@ function CtaSection() {
             >
               Programează-te online și bucură-te de o experiență premium.
             </p>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <Link href="/rezervare" className="btn-red">
+            <div
+              style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
+              className="cta-buttons"
+            >
+              <Link
+                href="/rezervare"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  padding: "14px 28px",
+                  background: "#E63329",
+                  color: "#FFFFFF",
+                  fontFamily: "var(--font-space-grotesk)",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.5px",
+                  textDecoration: "none",
+                  minHeight: 48,
+                }}
+              >
                 Rezervă Online <ArrowRight size={14} />
               </Link>
-              <a href={`tel:${SALON.phoneRaw}`} className="btn-outline-white">
+              <a
+                href={`tel:${SALON.phoneRaw}`}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  padding: "14px 28px",
+                  background: "transparent",
+                  color: "#FFFFFF",
+                  fontFamily: "var(--font-space-grotesk)",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.5px",
+                  textDecoration: "none",
+                  border: "0.5px solid rgba(255,255,255,0.5)",
+                  minHeight: 48,
+                }}
+              >
                 <Phone size={14} />
                 Sună: {SALON.phone}
               </a>
@@ -1059,7 +1108,6 @@ function CtaSection() {
           padding: "60px 40px",
         }}
       >
-        {/* Ghost DXS */}
         <div
           style={{
             position: "absolute",
@@ -1074,8 +1122,6 @@ function CtaSection() {
         >
           DXS
         </div>
-
-        {/* Decorative circle */}
         <div
           style={{
             position: "absolute",
@@ -1085,13 +1131,12 @@ function CtaSection() {
             borderRadius: "50%",
           }}
         />
-
         <div style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
           <div
             style={{
               fontFamily: "var(--font-space-grotesk)",
               fontWeight: 700,
-              fontSize: 20,
+              fontSize: "clamp(14px, 2vw, 20px)",
               color: "#FFFFFF",
               letterSpacing: "4px",
               textTransform: "uppercase",
@@ -1128,7 +1173,7 @@ function CtaSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .cta-grid { grid-template-columns: 1fr !important; }
+          .cta-left { padding: 60px 20px !important; }
         }
       `}</style>
     </section>

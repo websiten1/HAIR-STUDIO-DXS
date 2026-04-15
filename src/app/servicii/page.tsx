@@ -80,7 +80,7 @@ export default function ServiciiPage() {
       </section>
 
       {/* Services list */}
-      <section style={{ background: "var(--taupe-light)", padding: "80px 32px" }}>
+      <section className="section-padded" style={{ background: "var(--taupe-light)", padding: "80px 32px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           {SERVICES.map((cat, ci) => (
             <ScrollReveal key={cat.category} delay={ci * 0.05}>

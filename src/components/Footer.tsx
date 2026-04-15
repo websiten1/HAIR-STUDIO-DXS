@@ -3,20 +3,13 @@ import { NAV_LINKS, SALON } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: "#111111",
-        borderTop: "3px solid #E63329",
-      }}
-    >
+    <footer style={{ background: "#111111", borderTop: "3px solid #E63329" }}>
       <div
-        style={{
-          maxWidth: 1400,
-          margin: "0 auto",
-          padding: "64px 32px 32px",
-        }}
+        className="footer-inner"
+        style={{ maxWidth: 1400, margin: "0 auto", padding: "64px 32px 32px" }}
       >
         <div
+          className="footer-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr",
@@ -24,7 +17,6 @@ export default function Footer() {
             paddingBottom: 48,
             borderBottom: "0.5px solid rgba(255,255,255,0.08)",
           }}
-          className="footer-grid"
         >
           {/* Left */}
           <div>
@@ -39,8 +31,7 @@ export default function Footer() {
                 marginBottom: 12,
               }}
             >
-              HAIR STUDIO{" "}
-              <span style={{ color: "#E63329" }}>DXS</span>
+              HAIR STUDIO <span style={{ color: "#E63329" }}>DXS</span>
             </div>
             <p
               style={{
@@ -54,17 +45,17 @@ export default function Footer() {
             >
               {SALON.tagline}
             </p>
-            <p
+            <div
               style={{
                 fontFamily: "var(--font-space-mono)",
-                fontSize: 9,
-                color: "rgba(255,255,255,0.25)",
+                fontWeight: 700,
+                fontSize: 14,
+                color: "#E63329",
                 letterSpacing: "1px",
               }}
             >
-              © {new Date().getFullYear()} Hair Studio Dxs.<br />
-              Toate drepturile rezervate.
-            </p>
+              {SALON.rating} ★★★★★ Google
+            </div>
           </div>
 
           {/* Center */}
@@ -83,6 +74,19 @@ export default function Footer() {
               Navigare
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 16px" }}>
+              <Link
+                href="/"
+                style={{
+                  fontFamily: "var(--font-space-mono)",
+                  fontSize: 9,
+                  textTransform: "uppercase",
+                  letterSpacing: "1px",
+                  color: "rgba(255,255,255,0.45)",
+                  textDecoration: "none",
+                }}
+              >
+                Acasă
+              </Link>
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
@@ -99,19 +103,6 @@ export default function Footer() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/"
-                style={{
-                  fontFamily: "var(--font-space-mono)",
-                  fontSize: 9,
-                  textTransform: "uppercase",
-                  letterSpacing: "1px",
-                  color: "rgba(255,255,255,0.45)",
-                  textDecoration: "none",
-                }}
-              >
-                Acasă
-              </Link>
             </div>
           </div>
 
@@ -145,40 +136,29 @@ export default function Footer() {
             >
               {SALON.phone}
             </a>
-            <p
+            <a
+              href={SALON.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
+                display: "block",
                 fontFamily: "var(--font-space-mono)",
                 fontSize: 9,
                 color: "rgba(255,255,255,0.4)",
                 letterSpacing: "0.5px",
                 lineHeight: 2,
-                marginBottom: 16,
+                textDecoration: "none",
               }}
             >
-              {SALON.address}<br />
+              {SALON.address}
+              <br />
               {SALON.city}
-            </p>
-            <div
-              style={{
-                fontFamily: "var(--font-space-mono)",
-                fontSize: 11,
-                color: "#E63329",
-                fontWeight: 700,
-                letterSpacing: "1px",
-              }}
-            >
-              {SALON.rating} ★★★★★ Google
-            </div>
+            </a>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div
-          style={{
-            paddingTop: 24,
-            textAlign: "center",
-          }}
-        >
+        {/* Brand bar */}
+        <div style={{ paddingTop: 24, textAlign: "center" }}>
           <p
             style={{
               fontFamily: "var(--font-space-mono)",
@@ -193,13 +173,26 @@ export default function Footer() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .footer-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+      {/* Copyright bar */}
+      <div
+        style={{
+          borderTop: "0.5px solid rgba(255,255,255,0.08)",
+          padding: "16px 32px",
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "var(--font-space-mono)",
+            fontSize: 9,
+            textTransform: "uppercase",
+            letterSpacing: "2px",
+            color: "rgba(255,255,255,0.3)",
+          }}
+        >
+          © 2026 Hair Studio Dxs · Toate drepturile rezervate
+        </p>
+      </div>
     </footer>
   );
 }

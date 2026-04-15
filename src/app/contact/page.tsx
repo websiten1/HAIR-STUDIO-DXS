@@ -100,7 +100,7 @@ export default function ContactPage() {
         className="contact-grid"
       >
         {/* Contact info */}
-        <div style={{ background: "var(--taupe-light)", padding: "72px 48px 72px 32px" }}>
+        <div className="contact-left" style={{ background: "var(--taupe-light)", padding: "72px 48px 72px 32px" }}>
           <div style={{ maxWidth: 420, marginLeft: "auto" }}>
             <div
               style={{
@@ -172,7 +172,7 @@ export default function ContactPage() {
         </div>
 
         {/* Program + CTA */}
-        <div style={{ background: "#111111", padding: "72px 32px 72px 48px" }}>
+        <div className="contact-right" style={{ background: "#111111", padding: "72px 32px 72px 48px" }}>
           <div style={{ maxWidth: 400 }}>
             <div
               style={{

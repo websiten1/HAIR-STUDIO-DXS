@@ -62,6 +62,7 @@ export default function RezervareePage() {
       >
         {/* Left — salon info */}
         <div
+          className="booking-left"
           style={{
             background: "#111111",
             padding: "64px 48px 64px 32px",
@@ -241,7 +242,7 @@ export default function RezervareePage() {
         </div>
 
         {/* Right — form */}
-        <div style={{ background: "var(--taupe-light)" }}>
+        <div className="booking-right" style={{ background: "var(--taupe-light)" }}>
           <BookingForm />
         </div>
       </section>

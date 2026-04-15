@@ -156,7 +156,7 @@ export default function GaleriePage() {
       </div>
 
       {/* Gallery grid */}
-      <section style={{ background: "var(--taupe-light)", padding: "64px 32px" }}>
+      <section className="section-padded" style={{ background: "var(--taupe-light)", padding: "64px 32px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <AnimatePresence mode="wait">
             <motion.div

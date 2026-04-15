@@ -8,7 +8,7 @@ export const SALON = {
   rating: "5.0",
   reviews: "513",
   experience: "10+",
-  googleMapsUrl: "https://maps.google.com/?q=Rond+Targu+Cucu+Iasi",
+  googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjw99W39O-TAxUAAAAAHQAAAAAQPg..i&sca_esv=042d98b02a14ad67&udm=1&client=safari&hs=td2U&pvq=Cg0vZy8xMWM1NWgwZHRxIgsKBXNhbG9uEAIYAw&lqi=CgpzYWxvbiBpYXNpSLbmwNeUq4CACFoQEAAYASIKc2Fsb24gaWFzaZIBC2JhcmJlcl9zaG9w&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=ro&sa=X&ftid=0x40cafb9d275fba8b:0xc806b886566c90e0",
   schedule: [
     { day: "Luni – Vineri", hours: "09:00 – 19:00" },
     { day: "Sâmbătă", hours: "09:00 – 17:00" },
